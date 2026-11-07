@@ -50,7 +50,7 @@ export default function ColorStrip({ colors }) {
     <div className="bg-[#0b1d33] py-2.5 overflow-hidden border-b border-white/10 select-none">
       <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
         <span className="font-mono text-[11px] uppercase tracking-wider text-orange-400 font-semibold shrink-0">
-          23 colores · clic para copiar código
+          23 colores de formulación
         </span>
         <div className="flex-1 overflow-hidden relative">
           <div className="animate-marquee flex items-center gap-3">
