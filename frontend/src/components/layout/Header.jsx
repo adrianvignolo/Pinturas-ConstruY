@@ -201,11 +201,11 @@ export default function Header({ onSearch, activePage, setActivePage }) {
               className="flex items-center text-left group"
               title="Ir al inicio"
             >
-              <div className="h-12 w-auto px-3 py-1.5 rounded-xl bg-white border border-surface-border flex items-center justify-center shadow-2xs group-hover:shadow-xs transition-shadow">
+              <div className="h-14 sm:h-16 w-auto flex items-center justify-center transition-transform group-hover:scale-105">
                 <img
                   src="./brand/logo-construy.png"
                   alt="Materiales ConstruY"
-                  className="h-9 w-auto object-contain"
+                  className="h-12 sm:h-14 w-auto object-contain"
                 />
               </div>
             </button>
