@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { ShoppingBag, Check, Plus, AlertCircle, Eye, Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShoppingBag, Check, Plus, Minus, AlertCircle, Eye, Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 // Hook reutilizable para soportar dragging / swipe tanto con mouse como táctil
@@ -245,6 +245,7 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
   const [addedIds, setAddedIds] = useState({});
   const [selectedProductModal, setSelectedProductModal] = useState(null);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [modalQuantity, setModalQuantity] = useState(1);
   const [cardImageIndex, setCardImageIndex] = useState({});
   const { addToCart } = useCart();
 
@@ -391,6 +392,7 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                     onQuickView={() => {
                       setSelectedProductModal(prod);
                       setModalImageIndex(activeIdx);
+                      setModalQuantity(1);
                     }}
                   />
 
@@ -524,7 +526,7 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                 <p className="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed mb-6">
                   {selectedProductModal.description}
                 </p>
-                <div className="flex items-center justify-between p-3.5 bg-surface-subtle rounded-xl mb-6 border border-surface-border">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 p-4 bg-surface-subtle rounded-xl mb-6 border border-surface-border">
                   <div>
                     <span className="text-[10px] font-mono text-gray-400 block uppercase">Precio Oficial de Fábrica:</span>
                     <div className="flex items-baseline gap-1.5">
@@ -533,17 +535,48 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                       </span>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      handleAddProduct(selectedProductModal);
-                      setSelectedProductModal(null);
-                    }}
-                    className="px-5 py-2.5 bg-secondary text-white font-sans text-xs font-bold rounded-xl shadow-xs hover:bg-secondary/90 transition-colors flex items-center gap-2"
-                  >
-                    <ShoppingBag className="w-4 h-4" />
-                    <span>Añadir al Pedido</span>
-                  </button>
+
+                  <div className="flex items-center justify-between sm:justify-end gap-3">
+                    {/* Selector de cantidad */}
+                    <div className="flex items-center border border-surface-border bg-white rounded-xl p-1 shadow-2xs">
+                      <button
+                        type="button"
+                        onClick={() => setModalQuantity((prev) => Math.max(1, prev - 1))}
+                        disabled={modalQuantity <= 1}
+                        className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-primary hover:bg-surface-subtle disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                        title="Disminuir cantidad"
+                      >
+                        <Minus className="w-3.5 h-3.5" />
+                      </button>
+                      <span className="w-9 text-center font-mono font-bold text-sm text-primary">
+                        {modalQuantity}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setModalQuantity((prev) => prev + 1)}
+                        className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-primary hover:bg-surface-subtle transition-colors"
+                        title="Aumentar cantidad"
+                      >
+                        <Plus className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        addToCart(selectedProductModal, modalQuantity);
+                        setAddedIds((prev) => ({ ...prev, [selectedProductModal.id]: true }));
+                        setTimeout(() => {
+                          setAddedIds((prev) => ({ ...prev, [selectedProductModal.id]: false }));
+                        }, 1800);
+                        setSelectedProductModal(null);
+                      }}
+                      className="px-5 py-2.5 bg-secondary text-white font-sans text-xs font-bold rounded-xl shadow-xs hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2"
+                    >
+                      <ShoppingBag className="w-4 h-4" />
+                      <span>Añadir ({modalQuantity})</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
