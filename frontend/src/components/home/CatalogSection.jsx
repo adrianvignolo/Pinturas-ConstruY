@@ -1,6 +1,241 @@
-import React, { useState } from 'react';
-import { ShoppingBag, Check, Plus, AlertCircle, Eye, ShieldCheck, Droplets, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { ShoppingBag, Check, Plus, AlertCircle, Eye, Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+
+// Hook reutilizable para soportar dragging / swipe tanto con mouse como táctil
+function useDragSlide(length, activeIndex, onIndexChange) {
+  const [dragOffset, setDragOffset] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const startXRef = useRef(0);
+  const isDownRef = useRef(false);
+
+  const handlePointerDown = (e) => {
+    if (length <= 1) return;
+    // Evitar interceptar si se hace click en un botón hijo
+    if (e.target.closest('button')) return;
+
+    isDownRef.current = true;
+    setIsDragging(true);
+    startXRef.current = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+    setDragOffset(0);
+  };
+
+  const handlePointerMove = (e) => {
+    if (!isDownRef.current || length <= 1) return;
+    const currentX = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+    const diff = currentX - startXRef.current;
+    // Limitar el arrastre para una resistencia suave
+    setDragOffset(diff);
+  };
+
+  const handlePointerUp = () => {
+    if (!isDownRef.current) return;
+    isDownRef.current = false;
+    setIsDragging(false);
+
+    const threshold = 40; // píxeles necesarios para disparar el cambio
+    if (dragOffset < -threshold) {
+      // Arrastre hacia la izquierda -> siguiente
+      onIndexChange((activeIndex + 1) % length);
+    } else if (dragOffset > threshold) {
+      // Arrastre hacia la derecha -> anterior
+      onIndexChange((activeIndex - 1 + length) % length);
+    }
+    setDragOffset(0);
+  };
+
+  return {
+    dragOffset,
+    isDragging,
+    listeners: {
+      onMouseDown: handlePointerDown,
+      onMouseMove: handlePointerMove,
+      onMouseUp: handlePointerUp,
+      onMouseLeave: handlePointerUp,
+      onTouchStart: handlePointerDown,
+      onTouchMove: handlePointerMove,
+      onTouchEnd: handlePointerUp,
+      onTouchCancel: handlePointerUp
+    }
+  };
+}
+
+// Subcomponente de carrusel interactivo con Drag / Swipe para cada tarjeta
+function ProductCardImage({ prod, prodImages, activeIdx, onIndexChange, onQuickView }) {
+  const { dragOffset, isDragging, listeners } = useDragSlide(
+    prodImages.length,
+    activeIdx,
+    onIndexChange
+  );
+
+  const displayImage = prodImages[activeIdx] || prod.local_image || prod.image_url;
+
+  return (
+    <div
+      {...listeners}
+      className={`relative aspect-4/3 bg-surface-subtle overflow-hidden flex items-center justify-center p-6 select-none ${
+        prodImages.length > 1 ? 'cursor-grab active:cursor-grabbing' : ''
+      }`}
+    >
+      <div
+        className="w-full h-full flex items-center justify-center transition-transform"
+        style={{
+          transform: isDragging
+            ? `translateX(${dragOffset}px)`
+            : 'translateX(0px)',
+          transition: isDragging ? 'none' : 'transform 0.25s ease-out'
+        }}
+      >
+        <img
+          src={displayImage}
+          alt={prod.name}
+          draggable="false"
+          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300 pointer-events-none"
+          loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = './brand/logo-construy.png';
+          }}
+        />
+      </div>
+
+      {/* Flechas táctiles sutiles si hay varias imágenes */}
+      {prodImages.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onIndexChange((activeIdx - 1 + prodImages.length) % prodImages.length);
+            }}
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-white/80 hover:bg-white text-primary shadow-xs border border-surface-border opacity-0 group-hover:opacity-100 transition-opacity z-10"
+            title="Foto anterior"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onIndexChange((activeIdx + 1) % prodImages.length);
+            }}
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full bg-white/80 hover:bg-white text-primary shadow-xs border border-surface-border opacity-0 group-hover:opacity-100 transition-opacity z-10"
+            title="Siguiente foto"
+          >
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+        </>
+      )}
+
+      {/* Multi-image thumbnail dots */}
+      {prodImages.length > 1 && (
+        <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-full z-10 shadow-xs">
+          {prodImages.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onIndexChange(i);
+              }}
+              className={`rounded-full transition-all ${
+                activeIdx === i ? 'bg-secondary w-4 h-2' : 'bg-white/70 hover:bg-white w-2 h-2'
+              }`}
+              title={`Ver foto ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Top Badges */}
+      <div className="absolute top-3.5 left-3.5 flex items-center gap-2 pointer-events-none">
+        <span className="bg-surface-container-lowest/90 backdrop-blur-xs text-primary text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border border-surface-border">
+          {prod.category}
+        </span>
+      </div>
+
+      <div className="absolute top-3.5 right-3.5 pointer-events-none">
+        <span className="bg-emerald-50 text-emerald-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          {prod.stock_status}
+        </span>
+      </div>
+
+      {/* Quick view button */}
+      <button
+        onClick={onQuickView}
+        className="absolute bottom-3 right-3 p-2 bg-white/90 hover:bg-white text-primary rounded-lg shadow-xs border border-surface-border opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        title="Vista técnica detallada"
+      >
+        <Eye className="w-4 h-4" />
+      </button>
+    </div>
+  );
+}
+
+// Subcomponente de visor Modal con Drag / Swipe
+function ModalImageViewer({ modalImages, modalImageIndex, onIndexChange, prodName }) {
+  const { dragOffset, isDragging, listeners } = useDragSlide(
+    modalImages.length,
+    modalImageIndex,
+    onIndexChange
+  );
+
+  const currentImg = modalImages[modalImageIndex];
+
+  return (
+    <div
+      {...listeners}
+      className={`aspect-video bg-surface-subtle rounded-xl p-4 mb-3 flex items-center justify-center relative group overflow-hidden select-none ${
+        modalImages.length > 1 ? 'cursor-grab active:cursor-grabbing' : ''
+      }`}
+    >
+      <div
+        className="w-full h-full flex items-center justify-center transition-transform"
+        style={{
+          transform: isDragging
+            ? `translateX(${dragOffset}px)`
+            : 'translateX(0px)',
+          transition: isDragging ? 'none' : 'transform 0.25s ease-out'
+        }}
+      >
+        <img
+          src={currentImg}
+          alt={prodName}
+          draggable="false"
+          className="max-h-full object-contain mix-blend-multiply pointer-events-none"
+        />
+      </div>
+
+      {modalImages.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onIndexChange((modalImageIndex > 0 ? modalImageIndex - 1 : modalImages.length - 1));
+            }}
+            className="absolute left-2.5 p-1.5 rounded-full bg-white/90 hover:bg-white text-primary shadow-xs border border-surface-border transition-colors z-10"
+            title="Foto anterior"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onIndexChange((modalImageIndex < modalImages.length - 1 ? modalImageIndex + 1 : 0));
+            }}
+            className="absolute right-2.5 p-1.5 rounded-full bg-white/90 hover:bg-white text-primary shadow-xs border border-surface-border transition-colors z-10"
+            title="Siguiente foto"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </>
+      )}
+    </div>
+  );
+}
 
 export default function CatalogSection({ products, loading, error, onGoToOrders }) {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
@@ -14,16 +249,46 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
 
   const getProductImages = (prod) => {
     if (!prod) return [];
-    if (prod.category?.toLowerCase() === 'taza' || prod.name?.toLowerCase().includes('taza')) {
+    const cat = prod.category?.toLowerCase() || '';
+    const name = prod.name?.toLowerCase() || '';
+
+    if (cat === 'taza' || name.includes('taza')) {
       return [
-        '/products/krkbyxq4n9/taza_construy2.png',
-        '/products/ahj9m1443p/taza_construy.png'
+        './products/krkbyxq4n9/taza_construy2.png',
+        './products/ahj9m1443p/taza_construy.png'
       ];
     }
-    const list = [];
-    if (prod.local_image) list.push(prod.local_image);
-    if (prod.image_url && prod.image_url !== prod.local_image) list.push(prod.image_url);
-    return list.length > 0 ? list : ['/brand/logo-construy.png'];
+    if (cat.includes('esmalte') || name.includes('esmalte')) {
+      return [
+        './products/galon-esmalte/portada-v2.webp',
+        './products/galon-esmalte/portada-montaje.webp',
+        './products/galon-esmalte/0.webp',
+        './products/producto_pintura_esmalte_materiales_construy.png'
+      ];
+    }
+    if (name.includes('clase b')) {
+      return [
+        './products/cunete-caucho-b/portada-v2.webp',
+        './products/cunete-caucho-b/portada-montaje.webp',
+        './products/cunete-caucho-b/0.webp',
+        './products/producto_cunete_pintura_caucho_materiales_construy-27.png'
+      ];
+    }
+    if (name.includes('galón') || name.includes('galon')) {
+      return [
+        './products/galon-caucho-a/portada-v2.webp',
+        './products/galon-caucho-a/portada-montaje.webp',
+        './products/galon-caucho-a/0.webp',
+        './products/producto_pintura_caucho_materiales_construy-9.png'
+      ];
+    }
+    // Cuñete Clase A estándar o Venezuela
+    return [
+      './products/cunete-caucho-a/portada-v2.webp',
+      './products/cunete-caucho-a/portada-montaje.webp',
+      './products/cunete-caucho-a/0.webp',
+      prod.local_image || './products/producto_cunete_pintura_caucho_materiales_construy-25.png'
+    ];
   };
 
   const getUSDPrice = (priceRef) => {
@@ -58,23 +323,23 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
               <span className="text-on-surface-variant font-medium">{products.length} Productos</span>
             </div>
             <h2 className="font-headline text-3xl sm:text-4xl font-extrabold text-primary tracking-tight">
-              Presentaciones Oficiales
+              Pinturas y Artículos de Estudio
             </h2>
-            <p className="font-body text-sm sm:text-base text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
-              Pinturas de caucho lavable de alta viscosidad y esmalte sintético semi-industrial directo de fábrica. Precios en Bolívares (VES) y referencia en divisas.
+            <p className="font-body text-xs sm:text-sm text-gray-500 mt-1">
+              Desliza sobre la imagen para ver los diferentes ángulos y presentaciones de cada producto.
             </p>
           </div>
 
-          {/* Category Filter Buttons */}
-          <div className="flex flex-wrap gap-2">
+          {/* Category Filter Pills */}
+          <div className="flex flex-wrap items-center gap-2 bg-surface-subtle p-1.5 rounded-xl border border-surface-border">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-lg text-xs font-headline font-semibold transition-all ${
+                className={`px-3.5 py-1.5 text-xs font-mono font-medium rounded-lg transition-all ${
                   selectedCategory === cat
                     ? 'bg-primary text-white shadow-xs'
-                    : 'bg-surface-container-lowest text-on-surface hover:bg-surface-subtle border border-surface-border'
+                    : 'text-on-surface-variant hover:text-primary hover:bg-white/60'
                 }`}
               >
                 {cat}
@@ -83,28 +348,19 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
           </div>
         </div>
 
-        {/* Loading Skeleton */}
+        {/* Loading State */}
         {loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
-            {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="bg-surface-container-lowest rounded-xl p-5 border border-surface-border animate-pulse h-96">
-                <div className="w-full h-48 bg-gray-200 rounded-lg mb-4"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
-                <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-                <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                <div className="h-10 bg-gray-200 rounded mt-6"></div>
-              </div>
-            ))}
+          <div className="py-20 text-center">
+            <div className="inline-block w-8 h-8 border-4 border-secondary border-t-transparent rounded-full animate-spin"></div>
+            <p className="font-mono text-xs text-gray-500 mt-4">Consultando inventario de fábrica...</p>
           </div>
         )}
 
-        {/* Error message */}
+        {/* Error State */}
         {error && (
-          <div className="p-5 bg-red-50 border border-red-200 rounded-xl text-red-800 flex items-center gap-3 my-6">
-            <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-            <p className="text-xs sm:text-sm">
-              Error al consultar el catálogo desde MariaDB 3307: {error}
-            </p>
+          <div className="p-6 bg-red-50 border border-red-200 rounded-xl text-red-700 flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 shrink-0" />
+            <p className="text-xs font-body">{error}</p>
           </div>
         )}
 
@@ -115,72 +371,25 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
               const isAdded = addedIds[prod.id];
               const prodImages = getProductImages(prod);
               const activeIdx = cardImageIndex[prod.id] || 0;
-              const displayImage = prodImages[activeIdx] || prod.local_image || prod.image_url;
 
               return (
                 <article
                   key={prod.id}
                   className="bg-surface-container-lowest rounded-2xl border border-surface-border hover:border-primary/30 shadow-xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden group"
                 >
-                  {/* Image Viewport */}
-                  <div className="relative aspect-4/3 bg-surface-subtle overflow-hidden flex items-center justify-center p-6">
-                    <img
-                      src={displayImage}
-                      alt={prod.name}
-                      className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/brand/logo-construy.png';
-                      }}
-                    />
-
-                    {/* Multi-image thumbnail dots */}
-                    {prodImages.length > 1 && (
-                      <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/50 backdrop-blur-xs px-2.5 py-1 rounded-full z-10 shadow-xs">
-                        {prodImages.map((_, i) => (
-                          <button
-                            key={i}
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCardImageIndex((prev) => ({ ...prev, [prod.id]: i }));
-                            }}
-                            className={`rounded-full transition-all ${
-                              activeIdx === i ? 'bg-secondary w-4 h-2' : 'bg-white/70 hover:bg-white w-2 h-2'
-                            }`}
-                            title={`Ver foto ${i + 1}`}
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Top Badges */}
-                    <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                      <span className="bg-surface-container-lowest/90 backdrop-blur-xs text-primary text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border border-surface-border">
-                        {prod.category}
-                      </span>
-                    </div>
-
-                    <div className="absolute top-3.5 right-3.5">
-                      <span className="bg-emerald-50 text-emerald-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                        {prod.stock_status}
-                      </span>
-                    </div>
-
-                    {/* Quick view button */}
-                    <button
-                      onClick={() => {
-                        setSelectedProductModal(prod);
-                        setModalImageIndex(activeIdx);
-                      }}
-                      className="absolute bottom-3 right-3 p-2 bg-white/90 hover:bg-white text-primary rounded-lg shadow-xs border border-surface-border opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                      title="Vista técnica detallada"
-                    >
-                      <Eye className="w-4 h-4" />
-                    </button>
-                  </div>
+                  {/* Image Viewport con Swipe/Drag */}
+                  <ProductCardImage
+                    prod={prod}
+                    prodImages={prodImages}
+                    activeIdx={activeIdx}
+                    onIndexChange={(newIdx) =>
+                      setCardImageIndex((prev) => ({ ...prev, [prod.id]: newIdx }))
+                    }
+                    onQuickView={() => {
+                      setSelectedProductModal(prod);
+                      setModalImageIndex(activeIdx);
+                    }}
+                  />
 
                   {/* Body Content */}
                   <div className="p-5 flex-1 flex flex-col justify-between">
@@ -199,66 +408,50 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                           <span>Alta densidad</span>
                         </div>
                         <div className="flex items-center gap-1.5">
-                          <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                          <span>Lavable</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                          <span>Fórmula lavable</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Bottom Pricing & Add to Cart: Primero USD y luego VES */}
-                    <div className="pt-3 border-t border-surface-border">
-                      <div className="flex items-baseline justify-between mb-3.5">
-                        <div>
-                          <span className="text-[10px] font-mono uppercase text-gray-400 block">Precio Oficial</span>
-                          <div className="flex items-baseline gap-1.5">
-                            <span className="font-mono font-extrabold text-xl sm:text-2xl text-primary">
-                              ${getUSDPrice(prod.price_ref)}
-                            </span>
-                            <span className="text-xs font-mono font-bold text-secondary">
-                              USD
-                            </span>
-                          </div>
-                          <span className="font-mono text-xs text-on-surface-variant block mt-0.5">
-                            {Number(prod.price_ves).toLocaleString('es-VE', { minimumFractionDigits: 2 })} VES
+                    {/* Price and Cart Action */}
+                    <div className="pt-4 border-t border-surface-border flex items-center justify-between gap-3 mt-4">
+                      <div>
+                        <span className="text-[10px] font-mono text-gray-400 block uppercase">Precio</span>
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="font-mono font-extrabold text-xl text-primary">
+                            ${getUSDPrice(prod.price_ref)}
                           </span>
+                          <span className="text-[10px] font-mono text-gray-400">USD</span>
                         </div>
-                        <div className="text-right">
-                          <span className="bg-secondary/10 text-secondary text-[11px] font-mono font-bold px-2 py-0.5 rounded border border-secondary/20">
-                            Fábrica
+                        {prod.price_ves && (
+                          <span className="text-[10px] font-mono text-gray-400 block">
+                            Bs. {prod.price_ves.toLocaleString('es-VE', { minimumFractionDigits: 2 })}
                           </span>
-                        </div>
+                        )}
                       </div>
 
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => handleAddProduct(prod)}
-                          className={`flex-1 py-2.5 px-3.5 rounded-lg text-xs font-headline font-bold flex items-center justify-center gap-2 transition-all shadow-xs ${
-                            isAdded
-                              ? 'bg-emerald-600 text-white'
-                              : 'bg-primary hover:bg-primary-container text-white'
-                          }`}
-                        >
-                          {isAdded ? (
-                            <>
-                              <Check className="w-4 h-4" />
-                              <span>¡Agregado al Pedido!</span>
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-4 h-4" />
-                              <span>Agregar al Pedido</span>
-                            </>
-                          )}
-                        </button>
-
-                        <button
-                          onClick={onGoToOrders}
-                          className="p-2.5 bg-surface-subtle hover:bg-surface-container text-primary rounded-lg transition-colors border border-surface-border"
-                          title="Ver Pedido Completo"
-                        >
-                          <ShoppingBag className="w-4 h-4 text-orange-vibrant" />
-                        </button>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleAddProduct(prod)}
+                        className={`px-4 py-2.5 rounded-xl font-sans text-xs font-bold flex items-center gap-2 transition-all shadow-xs ${
+                          isAdded
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-primary hover:bg-secondary text-white active:scale-95'
+                        }`}
+                      >
+                        {isAdded ? (
+                          <>
+                            <Check className="w-4 h-4" />
+                            <span>Agregado</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus className="w-4 h-4" />
+                            <span>Al carrito</span>
+                          </>
+                        )}
+                      </button>
                     </div>
                   </div>
                 </article>
@@ -267,10 +460,9 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
           </div>
         )}
 
-        {/* Modal View */}
+        {/* Modal View con Drag / Swipe */}
         {selectedProductModal && (() => {
           const modalImages = getProductImages(selectedProductModal);
-          const currentImg = modalImages[modalImageIndex] || selectedProductModal.local_image || selectedProductModal.image_url;
 
           return (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
@@ -282,34 +474,13 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                   ✕
                 </button>
 
-                {/* Main image viewer with optional arrows */}
-                <div className="aspect-video bg-surface-subtle rounded-xl p-4 mb-3 flex items-center justify-center relative group overflow-hidden">
-                  <img
-                    src={currentImg}
-                    alt={selectedProductModal.name}
-                    className="max-h-full object-contain mix-blend-multiply transition-all"
-                  />
-                  {modalImages.length > 1 && (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() => setModalImageIndex((prev) => (prev > 0 ? prev - 1 : modalImages.length - 1))}
-                        className="absolute left-2.5 p-1.5 rounded-full bg-white/90 hover:bg-white text-primary shadow-xs border border-surface-border transition-colors"
-                        title="Foto anterior"
-                      >
-                        <ChevronLeft className="w-4 h-4" />
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setModalImageIndex((prev) => (prev < modalImages.length - 1 ? prev + 1 : 0))}
-                        className="absolute right-2.5 p-1.5 rounded-full bg-white/90 hover:bg-white text-primary shadow-xs border border-surface-border transition-colors"
-                        title="Siguiente foto"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    </>
-                  )}
-                </div>
+                {/* Main image viewer with Dragging / Swipe */}
+                <ModalImageViewer
+                  modalImages={modalImages}
+                  modalImageIndex={modalImageIndex}
+                  onIndexChange={setModalImageIndex}
+                  prodName={selectedProductModal.name}
+                />
 
                 {/* Thumbnail strip if multiple images */}
                 {modalImages.length > 1 && (
@@ -349,33 +520,17 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                         ${getUSDPrice(selectedProductModal.price_ref)} USD
                       </span>
                     </div>
-                    <span className="font-mono text-xs text-on-surface-variant block mt-0.5">
-                      {Number(selectedProductModal.price_ves).toLocaleString('es-VE', { minimumFractionDigits: 2 })} VES
-                    </span>
                   </div>
-                  <span className="text-xs font-mono font-bold text-secondary bg-secondary/10 px-3 py-1.5 rounded-lg border border-secondary/20">
-                    Stock Disponible
-                  </span>
-                </div>
-                <div className="flex gap-3">
                   <button
+                    type="button"
                     onClick={() => {
-                      handleAddProduct({ ...selectedProductModal, image: currentImg, local_image: currentImg });
+                      handleAddProduct(selectedProductModal);
                       setSelectedProductModal(null);
                     }}
-                    className="flex-1 bg-primary hover:bg-primary-container text-white font-headline font-bold py-2.5 px-4 rounded-lg text-xs flex items-center justify-center gap-2"
+                    className="px-5 py-2.5 bg-secondary text-white font-sans text-xs font-bold rounded-xl shadow-xs hover:bg-secondary/90 transition-colors flex items-center gap-2"
                   >
-                    <Plus className="w-4 h-4" />
-                    <span>Agregar al Pedido</span>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setSelectedProductModal(null);
-                      onGoToOrders();
-                    }}
-                    className="bg-secondary hover:bg-secondary-container text-white font-headline font-bold py-2.5 px-4 rounded-lg text-xs"
-                  >
-                    Ir al Pedido
+                    <ShoppingBag className="w-4 h-4" />
+                    <span>Añadir al Pedido</span>
                   </button>
                 </div>
               </div>
