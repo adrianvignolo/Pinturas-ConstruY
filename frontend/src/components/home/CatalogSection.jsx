@@ -154,12 +154,15 @@ function ProductCardImage({ prod, prodImages, activeIdx, onIndexChange, onQuickV
         </span>
       </div>
 
-      <div className="absolute top-3.5 right-3.5 pointer-events-none">
-        <span className="bg-emerald-50 text-emerald-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          {prod.stock_status}
-        </span>
-      </div>
+      {/* Badge de stock: Solo se muestra si el producto está Agotado */}
+      {prod.stock_status && prod.stock_status.toLowerCase().includes('agotado') && (
+        <div className="absolute top-3.5 right-3.5 pointer-events-none">
+          <span className="bg-rose-50 text-rose-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+            Agotado
+          </span>
+        </div>
+      )}
 
       {/* Quick view button */}
       <button
@@ -503,9 +506,18 @@ export default function CatalogSection({ products, loading, error, onGoToOrders 
                   </div>
                 )}
 
-                <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider">
-                  {selectedProductModal.category}
-                </span>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] font-mono font-bold text-secondary uppercase tracking-wider">
+                    {selectedProductModal.category}
+                  </span>
+                  {selectedProductModal.stock_status &&
+                    selectedProductModal.stock_status.toLowerCase().includes('agotado') && (
+                      <span className="bg-rose-50 text-rose-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-rose-200 flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+                        Agotado
+                      </span>
+                    )}
+                </div>
                 <h3 className="font-headline font-extrabold text-2xl text-primary mt-1 mb-2">
                   {selectedProductModal.name}
                 </h3>
