@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+<html lang="es" style=""><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=Montserrat:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-low": "#eff4ff", "on-secondary": "#ffffff", "primary": "#001026", "surface": "#f8f9ff", "inverse-surface": "#213145", "on-error-container": "#93000a", "surface-dim": "#cbdbf5", "on-secondary-container": "#541100", "navy-deep": "#07172B", "whatsapp-green": "#25D366", "tertiary-container": "#332200", "orange-vibrant": "#F05A28", "surface-subtle": "#F1F5F9", "surface-container-highest": "#d3e4fe", "on-primary-container": "#778db2", "secondary-fixed-dim": "#ffb5a0", "primary-container": "#0b2545", "surface-container": "#e5eeff", "error": "#ba1a1a", "on-tertiary-fixed": "#271900", "surface-border": "#E2E8F0", "inverse-on-surface": "#eaf1ff", "surface-container-high": "#dce9ff", "on-tertiary-container": "#b78300", "on-secondary-fixed-variant": "#862200", "surface-canvas": "#F8FAFC", "outline-variant": "#c4c6cf", "secondary-container": "#fd5927", "error-container": "#ffdad6", "secondary": "#b02f00", "on-primary": "#ffffff", "tertiary": "#180e00", "tertiary-fixed": "#ffdea8", "inverse-primary": "#b1c7f0", "primary-fixed-dim": "#b1c7f0", "on-secondary-fixed": "#3b0900", "on-surface": "#0b1c30", "primary-fixed": "#d5e3ff", "surface-bright": "#f8f9ff", "on-background": "#0b1c30", "on-primary-fixed-variant": "#314769", "background": "#f8f9ff", "on-tertiary": "#ffffff", "gold-warm": "#E5A823", "surface-variant": "#d3e4fe", "tertiary-fixed-dim": "#fcbb36", "outline": "#74777f", "on-error": "#ffffff", "on-surface-variant": "#44474e", "surface-tint": "#495f82", "secondary-fixed": "#ffdbd1", "on-tertiary-fixed-variant": "#5e4200", "surface-container-lowest": "#ffffff", "on-primary-fixed": "#001c3b" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "margin": "2rem", "space-2xl": "4rem", "gutter": "1.5rem", "space-xl": "2.5rem", "space-2xs": "0.125rem", "gutter-mobile": "1rem", "space-3xl": "6rem", "margin-mobile": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "display-lg-mobile": ["Montserrat"], "display-lg": ["Montserrat"], "headline-lg": ["Montserrat"], "body-lg": ["Hanken Grotesk"], "body-sm": ["Hanken Grotesk"], "spec-code": ["Hanken Grotesk"], "label-caps": ["Montserrat"], "headline-xl-mobile": ["Montserrat"], "headline-xl": ["Montserrat"], "label-md": ["Montserrat"], "body-md": ["Hanken Grotesk"], "headline-sm": ["Montserrat"] }, "fontSize": { "display-lg-mobile": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-lg": ["3.5rem", { "lineHeight": "4rem", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "body-sm": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "400" }], "spec-code": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "500" }], "label-caps": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.1em", "fontWeight": "700" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-md": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }], "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "headline-sm": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "0.02em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased" style="font-family: Poppins, sans-serif;"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.06)]"><div class="h-16 w-full max-w-[1280px] mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg shrink-0"><a class="flex items-center gap-space-sm" data-path="inicio" href="#"><img alt="Logo ConstruY" class="w-auto object-contain h-11" src="https://lh3.googleusercontent.com/aida/AEtjO1Un9_uEtCUOE0iez35ic10GKpVRXFrSI0Z-C0LTm1MFwThVQ4nRSGxr96NSaYpIHlIN1bZ3BFt0AqrwNfi2baJzWxCuSx9KrHtPMYPzNGP8G-azRnd40ooWsvLnLMBZ3NP8HancNKKYOSgkGp4jCLvF9mhy5TiHPs6R01ugPzIEb7wjme7053Iu4_XFK0SaR3uc66W4ynfYuoiBBBWykNd_F-gJtXw5TBVgw-MXHYq-muUCowlhoqjsDg"/></a><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-surface-container-high text-on-surface font-label-md"><div class="relative group"><button class="flex items-center gap-space-2xs px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button"><span class="">Catálogo</span><span class="material-symbols-outlined text-base">expand_more</span></button><div class="absolute left-0 top-full pt-space-xs w-64 hidden group-hover:block z-50"><div class="bg-surface-container-lowest rounded-lg shadow-[0_10px_15px_-3px_rgba(11,37,69,0.12)] p-space-xs flex flex-col gap-space-2xs"><a class="px-space-md py-space-sm rounded font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="presentaciones" href="#">Presentaciones y Envases</a><a class="px-space-md py-space-sm rounded font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="carta-de-color" href="#">Carta de Color &amp; Muestras</a><a class="px-space-md py-space-sm rounded font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="esmalte-semi-industrial" href="#">Esmalte Semi-Industrial</a><a class="px-space-md py-space-sm rounded font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="pinturas-de-caucho" href="#">Pinturas de Caucho Premium</a><a class="px-space-md py-space-sm rounded font-body-sm text-body-sm text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="fichas-tecnicas" href="#">Fichas Técnicas &amp; Rendimiento</a></div></div></div><a class="px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors" data-path="partner-construy" href="#">Partner ConstruY</a><a class="px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors" data-path="nuestra-historia" href="#">Nuestra historia</a><a class="px-space-sm py-space-xs rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors" data-path="cotiza-tu-proyecto" href="#">Cotiza tu proyecto</a></nav></div><div class="flex-1 max-w-md hidden md:flex items-center"><div class="relative w-full flex items-center bg-surface-subtle rounded-lg px-space-sm py-space-xs"><span class="material-symbols-outlined text-on-surface-variant mr-space-xs text-[20px]">search</span><input class="w-full bg-transparent font-body-sm text-body-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none" placeholder="Buscar color, código o producto..." type="search"/><span class="font-spec-code text-spec-code bg-surface-container px-space-xs py-space-2xs rounded text-on-surface-variant">⌘K</span></div></div><div class="flex items-center gap-space-sm shrink-0"><a class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors font-label-md text-label-md" data-path="mi-cuenta" href="#"><span class="material-symbols-outlined text-[20px]">person</span><span class="">Iniciar sesión</span></a><button aria-label="Ver carrito" class="relative flex items-center justify-center p-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button"><span class="material-symbols-outlined text-[24px]">shopping_bag</span><span class="absolute -top-1 -right-1 bg-secondary text-on-secondary font-label-caps text-label-caps h-5 min-w-[1.25rem] px-space-2xs rounded-full flex items-center justify-center">3</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]"><div class="flex flex-col w-full">
+<!-- ==================== HERO / SLIDER ABOVE THE FOLD ==================== -->
+<section class="relative w-full overflow-hidden bg-primary">
+<!-- Carousel Track Container -->
+<div class="relative w-full h-[260px] sm:h-[380px] md:h-[480px] lg:h-[540px]" id="hero-slider">
+<!-- Slide 1: Ya llegó Caucho Clase A -->
+<div class="slider-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out flex items-center justify-center bg-primary opacity-100 z-10">
+<img alt="Ya llegó · Hecho en Venezuela · Pintura de Caucho Clase A" class="w-full h-full object-cover object-center select-none" src="https://lh3.googleusercontent.com/aida/AEtjO1UHtxG0N4GgaF57xnlMaSJSSU6TzwfOf08adWVQiPMV1zFpTBnNrTbOBWBOMOxyBMeBx1JJf8UyRzvZU7ixW_SvORGxR9blMedEGeSpo3JdaFHygFhJi9KdL3rk6FQtofKE2JNTmAI6qyozGyeaRORB2ck2gTAw_60hyBueKd0fBQzDH3KMoa2vPTuhU3VfisxPkBdSLH9AN9RsfsQSsVdj9vkDnaZFSNZKQFlEtf0m9ViIoINDaymWTvA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none md:hidden"></div>
+</div>
+<!-- Slide 2: Delivery Gratis Caracas -->
+<div class="slider-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out flex items-center justify-center bg-primary opacity-0 z-0">
+<img alt="Delivery GRATIS en Caracas con motorizado ConstruY" class="w-full h-full object-cover object-center select-none" src="https://lh3.googleusercontent.com/aida/AEtjO1V-djnWCD6AyPPBGGpJbjWlgM1TNZdcmFQM4M-oa3dVSDEVDnNoG8khO2m5y4g_nSRFRe6V2wpuy6neG6WXBByTvpy21kLUYQBYeX1U4OrXb4-Oidex1BRJjbg-VK9FiNMHk3WrivszPZa-6XKoHdfS9AUWL868ie0PySenRvv_rI96-_l22DtONcS8N7sSds16dEGZDq65sgyD9yqhvA5iqVpObSKffKVr5d9ROTtRolbtlhacT6NrCpQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none md:hidden"></div>
+</div>
+<!-- Slide 3: Preventa -->
+<div class="slider-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out flex items-center justify-center bg-primary opacity-0 z-0">
+<img alt="¿Quieres comprar en preventa? Atento a nuestras publicaciones ConstruY" class="w-full h-full object-cover object-center select-none" src="https://lh3.googleusercontent.com/aida/AEtjO1VM01X7VlW67Mj51v1y9CFA0C7c-nIMRHPEpUhSlJmL1kKV0fYkdtq__PxFlR-VyCWkIEVF-erly4IPs_Ljj-jg72Y8IwvQmuJvTovOyBnuwlqSUeqqzr5T5CiTZioojiD9Uc99qoTxCXXp-HOEL82tyefWRSA6zjuSHvJz1e5pHcIYLLfOA9juowX9kHLgC2uXF4lwFAtywYt94Jv5xpebR6C820vfOSj_Ro7NeWrd4KTw5Rjcxn1nzQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none md:hidden"></div>
+</div>
+<!-- Slide 4: Clase B Próxima Llegada -->
+<div class="slider-slide absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out flex items-center justify-center bg-primary opacity-0 z-0">
+<img alt="Falta muy poco para su llegada · Pintura Caucho Clase B" class="w-full h-full object-cover object-center select-none" src="https://lh3.googleusercontent.com/aida/AEtjO1VNxekNO8gCInW_qNeU4ZOfaZ6068QTy_QXpHa0pahRgRJ-1jQ_7DKpv733vBDgHVc3LEkPl5isbE0iFREKZf6bvyfPxCddokuzgleQvYb1xv8_QGnzDsxMYsvBVoGSGzJ8FBIWdAgJMSvnKfd23Ig_g345RkjvjVouroMB67SW7mpsfjlZeOYMKDk2qMfMrNcH3K7EQuuI5yEuy3zdbsH0xHIkx-NVzANOik-qJP_LvYxKbmze9qXiKg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent pointer-events-none md:hidden"></div>
+</div>
+<!-- Slider Controls: Arrows -->
+<button aria-label="Banner anterior" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-surface-container-lowest/80 text-primary hover:bg-surface-container-lowest hover:scale-105 shadow-lg backdrop-blur-sm transition-all flex items-center justify-center" id="slider-prev">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<button aria-label="Siguiente banner" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-surface-container-lowest/80 text-primary hover:bg-surface-container-lowest hover:scale-105 shadow-lg backdrop-blur-sm transition-all flex items-center justify-center" id="slider-next">
+<span class="material-symbols-outlined text-[24px]">chevron_right</span>
+</button>
+<!-- Slider Indicators (Dots) -->
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-primary/40 backdrop-blur-md px-3 py-1.5 rounded-full">
+<button aria-label="Ir al banner 1" class="slider-dot h-2 rounded-full transition-all w-6 bg-gold-warm" data-slide="0"></button>
+<button aria-label="Ir al banner 2" class="slider-dot h-2 rounded-full hover:bg-surface-container-lowest transition-all w-2 bg-surface-container-lowest/50" data-slide="1"></button>
+<button aria-label="Ir al banner 3" class="slider-dot h-2 rounded-full hover:bg-surface-container-lowest transition-all w-2 bg-surface-container-lowest/50" data-slide="2"></button>
+<button aria-label="Ir al banner 4" class="slider-dot h-2 rounded-full hover:bg-surface-container-lowest transition-all w-2 bg-surface-container-lowest/50" data-slide="3"></button>
+</div>
+</div>
+<!-- Quick Formula Palette Preview Ribbon -->
+<div class="w-full bg-primary-container px-gutter py-2 flex items-center justify-between text-on-primary">
+<div class="max-w-[1280px] w-full mx-auto flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-space-sm">
+<span class="font-spec-code text-spec-code text-gold-warm uppercase tracking-wider font-semibold">23 Colores Oficiales</span>
+<span class="hidden sm:inline text-on-primary-container text-xs">·</span>
+<span class="hidden sm:inline font-spec-code text-spec-code text-on-primary-container">Códigos de formulación directa y acabados arquitectónicos</span>
+</div>
+<!-- Micro swatch rainbow strip -->
+<div class="flex items-center gap-1 overflow-x-auto py-1">
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #FFFFFF;" title="Blanco"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #F1EBE3;" title="Blanco Ostra"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #BBCBA8;" title="Verde"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #393E38;" title="Verde Oscuro"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #1A4686;" title="Azul Oscuro"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #543F28;" title="Madera"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #C22F1F;" title="Rojo Caucho"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #E9C323;" title="Amarillo Caucho"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #340D19;" title="Púrpura"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #458FBC;" title="Azul Claro"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #AE1F23;" title="Rojo Esmalte"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #025395;" title="Azul Esmalte"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #035E52;" title="Verde Opaco"></span>
+<span class="w-3.5 h-3.5 rounded-sm shadow-sm" style="background-color: #000000;" title="Negro"></span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== CINTILLO / BENEFICIOS & PROGRAMA DE ESTRELLAS ==================== -->
+<section class="w-full bg-surface-container-lowest shadow-sm py-4">
+<div class="max-w-[1280px] mx-auto px-gutter flex flex-col xl:flex-row items-center justify-between gap-4">
+<!-- Primary Incentive Callout -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="w-10 h-10 rounded-lg bg-gold-warm/20 flex items-center justify-center text-gold-warm">
+<span class="material-symbols-outlined text-[24px]">hotel_class</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary leading-tight">Gana estrellas en cada compra</span>
+<span class="px-2 py-0.5 rounded bg-secondary-container/15 text-secondary font-spec-code text-spec-code font-bold">0.30★ / 1 USD</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Se canjean directamente al finalizar tu orden sin pasos complejos</p>
+</div>
+</div>
+<!-- Exchange Chips Slider/Scroll -->
+<div class="flex items-center gap-2 overflow-x-auto w-full xl:w-auto pb-1 xl:pb-0 scrollbar-none">
+<div class="shrink-0 flex items-center gap-2 bg-surface-subtle px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-5 h-5 rounded-full bg-gold-warm text-tertiary font-label-caps text-label-caps flex items-center justify-center font-bold">★</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary leading-tight">150★</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Taza ConstruY</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2 bg-surface-subtle px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-5 h-5 rounded-full bg-gold-warm text-tertiary font-label-caps text-label-caps flex items-center justify-center font-bold">★</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary leading-tight">350★</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Galón de Esmalte</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2 bg-surface-subtle px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-5 h-5 rounded-full bg-gold-warm text-tertiary font-label-caps text-label-caps flex items-center justify-center font-bold">★</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary leading-tight">350★</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Galón Caucho Clase A</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-5 h-5 rounded-full bg-gold-warm text-tertiary font-label-caps text-label-caps flex items-center justify-center font-bold">★</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary leading-tight">885★</span>
+<span class="font-spec-code text-spec-code text-on-surface">Cuñete Clase A Blanco</span>
+</div>
+</div>
+<div class="shrink-0 flex items-center gap-2 bg-surface-container-high px-3 py-1.5 rounded-lg shadow-sm">
+<span class="w-5 h-5 rounded-full bg-gold-warm text-tertiary font-label-caps text-label-caps flex items-center justify-center font-bold">★</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary leading-tight">885★</span>
+<span class="font-spec-code text-spec-code text-on-surface">Cuñete Clase A Color</span>
+</div>
+</div>
+</div>
+<!-- Action Link -->
+<a class="shrink-0 inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-orange-vibrant transition-colors" href="#partner">
+<span class="">Conoce Partner ConstruY</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- ==================== 01 / CATÁLOGO DE PRESENTACIONES ==================== -->
+<section class="w-full py-space-2xl bg-surface" id="catalogo">
+<div class="max-w-[1280px] mx-auto px-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-xl">
+<div>
+<span class="font-spec-code text-spec-code text-secondary uppercase font-bold tracking-widest">01 / CATÁLOGO</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mt-1">Presentaciones y Formatos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mt-1">Materiales formulados para máxima adherencia, poder cubriente y resistencia al intemperismo tropical venezolano.</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex items-center gap-2 overflow-x-auto p-1 bg-surface-container rounded-lg">
+<button class="catalog-filter-btn px-4 py-2 rounded font-label-md text-label-md bg-primary text-on-primary shadow-sm transition-all" data-category="all" type="button">
+            Todo
+          </button>
+<button class="catalog-filter-btn px-4 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-category="esmalte" type="button">
+            Esmalte semi-industrial
+          </button>
+<button class="catalog-filter-btn px-4 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-category="caucho" type="button">
+            Pinturas de caucho
+          </button>
+<button class="catalog-filter-btn px-4 py-2 rounded font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-category="taza" type="button">
+            Merchandising
+          </button>
+</div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Product 1: Cuñete Caucho Clase A Hecho en Venezuela -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300" data-cat="caucho">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-secondary text-on-secondary font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm z-10 font-bold">
+                Hecho en Venezuela
+              </span>
+<img alt="Cuñete Pintura de Caucho Clase A Hecho en Venezuela ConstruY" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Vp6Z5BTR0HjxJIhuOmpB4ikbHPFrb4Po7V_pbBfmqumdn5Bpa9qvs9O_kJQ2U-QRG_FqyogbkOS1iV_Nsn2cfHHAXfP1Tw7ppwYiscB1LtflANtoR_NohHmx3t4saw_nhZkGGN_XSM8Zd0C0sUQAU8Vv_ca6GiS4qL3-mCAq9zi_kBeeFmgpDMP8ZBf27oBILSIOOrJ0BEy0y4PDN8CgO-MCadvMuPcRJieOfI-GppuPKWHABmVNEr564"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-secondary font-semibold uppercase">Pinturas de Caucho</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">4 Galones (Cuñete)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              Cuñete Caucho Clase A
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Máxima lavabilidad arquitectónica. Diseñado para fachadas e interiores de alta exigencia.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">103.965,84 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">118,00 REF <span class="text-xs">USD</span></div>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-2 py-1 rounded font-bold">885★</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20Cu%C3%B1ete%20Caucho%20Clase%20A%20Hecho%20en%20Venezuela" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="">Pedir directo</span>
+</a>
+<button aria-label="Agregar a lista" class="w-10 h-10 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 2: Cuñete Caucho Clase A Estándar -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300" data-cat="caucho">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-primary-container text-gold-warm font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider shadow-sm z-10 font-bold">
+                Clase A
+              </span>
+<img alt="Cuñete Caucho Clase A Acabado Mate Lavable" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Xg_IhuZ59GJnAv-bKuS3MCzSzoY_CnUZKUL_lTgzEGhMEbC8Mehbm4gbVS78csDcUeE1VrIYuAhkK84eR2fzFxwbrDXq8pv6zbV1B5_u1sgw37UzLYvkZu2VkVceBCWJqpSOaRoHzSz0v20lWjuVgODToGi5ams2_JLQNh-9dwG8yXq5yxcMc5VUOWxF00Tfbo9lKz2fGRKGEkdPWdOskmnDh9lIN0PpVf03WCQZ_IiOt1_1V3Lsg83R0"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-secondary font-semibold uppercase">Pinturas de Caucho</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">4 Galones</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              Cuñete Caucho Clase A
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Gama estándar de cubrimiento superior. Disponible en toda la paleta de 15 tonos arquitectónicos.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">97.093,52 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">110,20 REF <span class="font-spec-code text-spec-code text-secondary ml-1">hay opciones</span></div>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-2 py-1 rounded font-bold">885★</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20Cu%C3%B1ete%20Caucho%20Clase%20A" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="">Pedir directo</span>
+</a>
+<button aria-label="Agregar a lista" class="w-10 h-10 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 3: Galón Caucho Clase A -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300" data-cat="caucho">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-surface-container-highest text-primary font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider z-10 font-bold">
+                1 Galón (3.785 L)
+              </span>
+<img alt="Galón Caucho Clase A ConstruY" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1Xmvg0yHNfKRGfv2j-1HHD7zLCoXYPpOu3OvvlPZSpwvh6vHSuNBRz3gM8qi0L72hi8R_mMCv_WFKbOn2HTKxAUaS_wKkhI_kpnNpYT7iR74_Ob4_OdSsUbxOiRrzXDwG4_dq7Ccvs7IT1xD_B-ESAJI2FBnuekru5MED6fT0NdgQhD7ImRhGTb4rbb2cr5oD3owK2gEdA5BkvVSGuGlQdfa81s3Wao0TfcPiK0njGgegz3dYeFDIwMSIw"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-secondary font-semibold uppercase">Pinturas de Caucho</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Interior / Exterior</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              Galón Caucho Clase A
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Rendimiento práctico de 35 a 40 m² por mano. Excelente nivelación con brocha o rodillo.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">31.938,66 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">36,25 REF <span class="font-spec-code text-spec-code text-secondary ml-1">hay opciones</span></div>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-2 py-1 rounded font-bold">350★</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20Gal%C3%B3n%20Caucho%20Clase%20A" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="">Pedir directo</span>
+</a>
+<button aria-label="Agregar a lista" class="w-10 h-10 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 4: Galón de Esmalte Semi-Industrial -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300" data-cat="esmalte">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-primary text-on-primary font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider z-10 font-bold">
+                Semi-Industrial
+              </span>
+<img alt="Galón de Esmalte Semi-Industrial ConstruY" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1UXBvOyhacqWg5Yyx861jjyMydSXiFOcS_OZdPSw2COL3fkdnhkuOKdilOa_9ZsF_b0bzqTFBlfMq9hr_1FzF-YMTcC2Zn2UX9rMfXr2836dc-yYnqCkd3PoaHWGZuGZc6Lrw9V9j1UAUok-OvaEQetYziSRSa1qI--GCQ5luxPk_7hHD1fFKa4iJVzcjnZRVLZCz3T44bbNwo-_hf_HQGVXIM7PM48YcnRP1moBMa1ZFAqrEPqP7BzFQ"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-secondary font-semibold uppercase">Esmalte Semi-Industrial</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Metales &amp; Mampostería</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              Galón de Esmalte
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Brillo protector alquídico con alto poder anticorrosivo para herrería, marcos y portones.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">35.771,30 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">40,60 REF <span class="font-spec-code text-spec-code text-secondary ml-1">hay opciones</span></div>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-2 py-1 rounded font-bold">350★</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20Gal%C3%B3n%20de%20Esmalte%20Semi-Industrial" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="">Pedir directo</span>
+</a>
+<button aria-label="Agregar a lista" class="w-10 h-10 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product 5: Cuñete Caucho Clase B (Agotado) -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm opacity-90 transition-all duration-300" data-cat="caucho">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-error text-on-error font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider z-10 font-bold">
+                Agotado
+              </span>
+<img alt="Cuñete Caucho Clase B ConstruY" class="w-full h-full object-contain grayscale-[30%]" src="https://lh3.googleusercontent.com/aida/AEtjO1XMJo2xVJAWb8Nx-kcgNPK1T3qYVlcSnemP_CshrIY82qzlkhCSBApTe-U2yh8N0fhAbdYBFj3Z9k2ZlV_8Aagcl1Mf84Z_bZthNj9NxUXDwsBFtws-d8Is8L7ovuetI_eBqg3fLy5G4vCkfTEQNVlZYhgoEsGetedABkn2BaXHkm8vkIq3iiYomE41RQu5Mmc_7_D5GwaUxYz7cETtHL9EjSGN4jnnWf1DoI__Mr8HE6vS-PFUGPupVw"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-on-surface-variant font-semibold uppercase">Pinturas de Caucho</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Línea Económica</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">
+              Cuñete Caucho Clase B
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Excelente rendimiento para proyectos residenciales de gran escala y cielorrasos.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface-variant font-bold">90.961,30 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">103,24 REF</div>
+</div>
+<span class="font-spec-code text-spec-code bg-surface-container px-2 py-1 rounded text-on-surface-variant font-bold">Próximamente</span>
+</div>
+<a class="w-full bg-surface-container text-primary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition-colors" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20notif%C3%ADcame%20cuando%20llegue%20el%20Cu%C3%B1ete%20Clase%20B" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">notifications</span>
+<span class="">Avisarme cuando esté disponible</span>
+</a>
+</div>
+</div>
+<!-- Product 6: Taza ConstruY -->
+<div class="product-item group bg-surface-container-lowest rounded-xl p-5 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300" data-cat="taza">
+<div>
+<div class="relative w-full aspect-square bg-surface-subtle rounded-lg flex items-center justify-center p-4 overflow-hidden mb-4">
+<span class="absolute top-3 left-3 bg-gold-warm text-tertiary-container font-label-caps text-label-caps px-2.5 py-1 rounded-md uppercase tracking-wider z-10 font-bold">
+                Edición Oficial
+              </span>
+<img alt="Taza Cerámica Oficial Materiales ConstruY" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1XHlBNa2c0u79u65Vj-lPJCJRly2FZq3pzzOsrnrXJ2luRg6BvcemeDiwgaSR3UeuS29sDoKs4nZeirmN9Y1AJXug0Hoca_aBsJfKGutGM2nKW0f7vjnoAwOpB0HW2qNoRzNsbIX2iaCaHYeEloOd3kjDNvLbXpmr9PNp6IQSZ_lGDvI_AOUeO0CRqVyROUZDRIqWV7JyYjNyjaifNY-eLP9GQIvY6u7rjJNWkTn2KhLSW31yqmaofnvw"/>
+</div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-spec-code text-spec-code text-secondary font-semibold uppercase">Merchandising</span>
+<span class="text-on-surface-variant text-xs">·</span>
+<span class="font-spec-code text-spec-code text-on-surface-variant">Cerámica 11 oz</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">
+              Taza ConstruY
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Cerámica vitrificada con el icónico isotipo 'Y'. Canjeable con tus estrellas acumuladas.
+            </p>
+</div>
+<div class="mt-6 pt-4 bg-surface-subtle/50 rounded-lg p-3">
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-bold">8.810,66 VES</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">10,00 REF <span class="text-xs">USD</span></div>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-2 py-1 rounded font-bold">150★</span>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex-1 bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md py-2.5 px-3 rounded-lg flex items-center justify-center gap-1.5 transition-colors shadow-sm" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20adquirir%20la%20Taza%20ConstruY" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+<span class="">Pedir directo</span>
+</a>
+<button aria-label="Agregar a lista" class="w-10 h-10 rounded-lg bg-surface-container text-primary hover:bg-surface-container-high transition-colors flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 02 / CARTA DE COLOR CONSTRUY ==================== -->
+<section class="w-full py-space-3xl bg-surface-container-low/40" id="carta">
+<div class="max-w-[1280px] mx-auto px-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-space-2xl">
+<div>
+<span class="font-spec-code text-spec-code text-secondary uppercase font-bold tracking-widest">02 / CARTA OFICIAL</span>
+<h2 class="font-headline-xl text-headline-xl text-primary mt-1">Carta de Color ConstruY</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+            Formulaciones exactas basadas en pigmentos micronizados resistentes a los rayos UV. Selecciona un color para consultar disponibilidad y rendimiento técnico.
+          </p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-4 py-2 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span class="font-spec-code text-spec-code text-on-surface">Pigmentos puros libres de plomo y mercurio</span>
+</div>
+</div>
+<!-- Subsection 1: Pintura de Caucho Clase A -->
+<div class="mb-space-2xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-6 gap-2">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary flex items-center gap-3">
+<span class="">Pintura de Caucho · Clase A</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container/15 text-secondary font-label-caps text-label-caps">15 Colores</span>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Acabado mate aterciopelado · Lavable · Interior &amp; Exterior</p>
+</div>
+<span class="font-spec-code text-spec-code text-gold-warm bg-primary px-3 py-1.5 rounded font-semibold self-start sm:self-auto">
+            Los 7 primeros colores están disponibles también en Cuñete
+          </span>
+</div>
+<!-- Swatches Grid: Caucho (15 colors + 1 custom CTA) -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-3.5">
+<!-- Blanco -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Blanco</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#FFFFFF</div>
+</div>
+</div>
+<!-- Blanco Ostra -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #F1EBE3;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Blanco Ostra</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-BOW1</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#F1EBE3</div>
+</div>
+</div>
+<!-- Verde -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #BBCBA8;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Verde</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-7494C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#BBCBA8</div>
+</div>
+</div>
+<!-- Verde Oscuro -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #393E38;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Verde Oscuro</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-445C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#393E38</div>
+</div>
+</div>
+<!-- Azul Oscuro -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #1A4686;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Azul Oscuro</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-281A</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#1A4686</div>
+</div>
+</div>
+<!-- Madera -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #543F28;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Madera</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-14A</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#543F28</div>
+</div>
+</div>
+<!-- Rojo -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #C22F1F;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Rojo</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-185C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#C22F1F</div>
+</div>
+</div>
+<!-- Amarillo -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #E9C323;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Amarillo</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-252A</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#E9C323</div>
+</div>
+</div>
+<!-- Púrpura -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #340D19;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Púrpura</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-262C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#340D19</div>
+</div>
+</div>
+<!-- Gris Troyano -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #656B6E;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Gris Troyano</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-4233D</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#656B6E</div>
+</div>
+</div>
+<!-- Gris Libertad -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #9B9C9F;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Gris Libertad</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-4222T</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#9B9C9F</div>
+</div>
+</div>
+<!-- Gris Místico -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #BBBBB8;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Gris Místico</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-4225P</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#BBBBB8</div>
+</div>
+</div>
+<!-- Azul Claro -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #458FBC;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Azul Claro</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-PBC</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#458FBC</div>
+</div>
+</div>
+<!-- Gris Cálido -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #786669;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Gris Cálido</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-WG8C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#786669</div>
+</div>
+</div>
+<!-- Verde Pantano -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #878A76;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Verde Pantano</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">M9010-415C</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#878A76</div>
+</div>
+</div>
+<!-- Custom Color Consult Card -->
+<a class="group bg-primary rounded-lg overflow-hidden p-3 flex flex-col justify-between text-on-primary hover:bg-navy-deep transition-all shadow-md" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20busco%20un%20tono%20personalizado%20que%20no%20est%C3%A1%20en%20la%20carta" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-gold-warm text-[24px]">palette</span>
+<span class="material-symbols-outlined text-[18px] text-on-primary-container group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-on-primary font-bold">¿No ves tu color?</div>
+<div class="font-body-sm text-body-sm text-gold-warm mt-0.5">Consúltanos</div>
+<div class="font-spec-code text-spec-code text-on-primary-container mt-1">Formulación a medida</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Subsection 2: Esmalte Semi-Industrial -->
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 mb-6 gap-2">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary flex items-center gap-3">
+<span class="">Esmalte Semi-Industrial</span>
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-container/15 text-secondary font-label-caps text-label-caps">8 Colores</span>
+</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Galón · Acabado brillante protector · Estructuras metálicas, carpintería y portones</p>
+</div>
+<span class="font-spec-code text-spec-code text-on-surface-variant bg-surface-container px-3 py-1.5 rounded self-start sm:self-auto">
+            Disponibles en galón para aplicación inmediata
+          </span>
+</div>
+<!-- Swatches Grid: Esmalte (8 colors) -->
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5">
+<!-- Rojo -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #AE1F23;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Rojo</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-RAL3020</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#AE1F23</div>
+</div>
+</div>
+<!-- Amarillo -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #E5BC40;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Amarillo</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-15</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#E5BC40</div>
+</div>
+</div>
+<!-- Azul -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #025395;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Azul</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-RAL5010</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#025395</div>
+</div>
+</div>
+<!-- Plata -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #A6A6A6;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Plata</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">EP-57</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#A6A6A6</div>
+</div>
+</div>
+<!-- Gris -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #606163;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Gris</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-97</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#606163</div>
+</div>
+</div>
+<!-- Verde Opaco -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #035E52;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Verde Opaco</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-RAL6026</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#035E52</div>
+</div>
+</div>
+<!-- Negro -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #000000;">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-surface-container-lowest text-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Negro</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-02</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#000000</div>
+</div>
+</div>
+<!-- Blanco Esmalte -->
+<div class="color-swatch-card group bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="h-20 w-full relative" style="background-color: #FFFFFF; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);">
+<span class="swatch-check absolute top-2 right-2 w-5 h-5 rounded-full bg-primary text-on-primary text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">✓</span>
+</div>
+<div class="p-2.5 bg-surface-container-lowest">
+<div class="font-label-md text-label-md text-primary font-bold truncate">Blanco</div>
+<div class="font-spec-code text-spec-code text-on-surface-variant uppercase">FE-01</div>
+<div class="font-spec-code text-spec-code text-secondary font-semibold">#FFFFFF</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 03 / PROGRAMA PARTNER CONSTRUY ==================== -->
+<section class="w-full py-space-3xl bg-primary text-on-primary" id="partner">
+<div class="max-w-[1280px] mx-auto px-gutter">
+<!-- Section Tag & Title -->
+<div class="max-w-2xl mb-space-2xl">
+<span class="font-spec-code text-spec-code text-gold-warm uppercase font-bold tracking-widest">03 / PROGRAMA DE LEALTAD Y ALIANZAS</span>
+<h2 class="font-headline-xl text-headline-xl text-on-primary mt-1">Vuélvete un Partner ConstruY</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container mt-2">
+          Diseñado para contratistas, talleres y distribuidores. Cada compra suma puntos canjeables por cuñetes de alta rotación y beneficios de despacho prioritario.
+        </p>
+</div>
+<!-- Tiers Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg mb-space-2xl"><!-- Nivel 1: Auyantepuy (Base minimalista elegante) -->
+<div class="bg-primary-container/60 rounded-xl p-space-lg flex flex-col justify-between shadow-md relative overflow-hidden transition-all duration-300 hover:bg-primary-container/80 hover:shadow-lg" style="border: 1px solid rgba(116, 119, 127, 0.25);">
+<div class="absolute -right-8 -bottom-8 w-40 h-40 bg-surface-container-lowest/5 rounded-full pointer-events-none blur-2xl"></div>
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-gold-warm"></span>
+<span class="font-spec-code text-spec-code text-gold-warm font-bold uppercase tracking-wider">NIVEL 1 · DETAL</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest/10 text-on-primary-container font-spec-code text-spec-code font-medium">Compras al menor</span>
+</div>
+<div class="flex items-center gap-3 mb-2">
+<div class="w-11 h-11 rounded-lg bg-surface-container-lowest/10 flex items-center justify-center text-gold-warm shrink-0">
+<span class="material-symbols-outlined text-[24px]">person_add</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-primary">Auyantepuy</h3>
+<p class="font-spec-code text-spec-code text-on-primary-container">Acceso directo para clientes y talleres individuales</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-primary-container mb-6 mt-3">
+      El nivel de entrada del programa. Acumulas puntos automáticos en cada orden desde la tienda y los canjeas directamente al facturar.
+    </p>
+<ul class="flex flex-col gap-3.5 mb-8">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-gold-warm text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md text-on-primary">Puntos directos por cada compra, sin compras mínimas mensuales</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-gold-warm text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md text-on-primary">Canje de estrellas aplicable de inmediato al total del carrito</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-gold-warm text-[20px] shrink-0 mt-0.5">check_circle</span>
+<span class="font-body-md text-body-md text-on-primary">Acceso anticipado a lotes de pintura recién fabricados</span>
+</li>
+</ul>
+</div>
+<div class="pt-4 bg-primary/50 -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl flex items-center justify-between border-t border-surface-container-lowest/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-gold-warm text-[18px]">info</span>
+<span class="font-spec-code text-spec-code text-gold-warm">Registro automático e inmediato al realizar tu primera compra</span>
+</div>
+<span class="font-spec-code text-spec-code text-on-primary-container uppercase font-bold">Gratis</span>
+</div>
+</div>
+<!-- Nivel 2: Roraima (Variación 2: Jerarquía Industrial con Borde Naranja Continuo 2px y Acento Vibrante) -->
+<div class="bg-navy-deep rounded-xl p-space-lg flex flex-col justify-between shadow-2xl relative transition-transform duration-300 hover:scale-[1.02]" style="border: 2px solid #d94814; box-shadow: 0 16px 40px -10px rgba(217, 72, 20, 0.35); transform: translateY(-4px);">
+<!-- Badge Superior Flotante Industrial -->
+<div class="absolute -top-3.5 left-6 px-3.5 py-1 rounded-md text-on-secondary font-label-caps text-label-caps font-bold tracking-widest uppercase flex items-center gap-1.5 shadow-md" style="background-color: #d94814;">
+<span class="material-symbols-outlined text-[16px]">workspace_premium</span>
+<span>MAYORISTAS Y CONSTRUCTORAS · MÁXIMO BENEFICIO</span>
+</div>
+<div class="absolute -right-10 -bottom-10 w-56 h-56 rounded-full pointer-events-none blur-3xl opacity-20" style="background-color: #d94814;"></div>
+<div class="pt-2">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full animate-pulse" style="background-color: #d94814;"></span>
+<span class="font-spec-code text-spec-code font-bold uppercase tracking-wider" style="color: #ff8c69;">NIVEL 2 · MAYORISTA &amp; CORPORATIVO</span>
+</div>
+<span class="px-3 py-1 rounded-full font-spec-code text-spec-code font-bold bg-gold-warm/20 text-gold-warm border border-gold-warm/30">
+        Tarifa Preferencial B2B
+      </span>
+</div>
+<div class="flex items-center gap-4 mb-3">
+<div class="w-14 h-14 rounded-xl flex items-center justify-center shadow-lg shrink-0" style="background: linear-gradient(135deg, #d94814 0%, #b02f00 100%);">
+<span class="material-symbols-outlined text-on-primary text-[32px]">shield_with_heart</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-primary flex items-center gap-2">
+<span>Roraima</span>
+<span class="material-symbols-outlined text-gold-warm text-[22px]">stars</span>
+</h3>
+<p class="font-spec-code text-spec-code" style="color: #ff8c69;">Alianza estratégica para proyectos de alto metraje</p>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-primary-container mb-6">
+      El nivel para aliados comerciales, constructoras e ingenieros residentes. Precios escalonados con facturación fiscal directa de fábrica y despacho coordinado.
+    </p>
+<ul class="flex flex-col gap-3.5 mb-8">
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(217, 72, 20, 0.2);">
+<span class="material-symbols-outlined text-[18px] font-bold" style="color: #ff784b;">verified</span>
+</div>
+<span class="font-body-md text-body-md text-on-primary"><strong>Precios por volumen escalonado</strong> en toda la carta técnica de esmaltes y cauchos</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(217, 72, 20, 0.2);">
+<span class="material-symbols-outlined text-[18px] font-bold" style="color: #ff784b;">bolt</span>
+</div>
+<span class="font-body-md text-body-md text-on-primary"><strong>Acumulación acelerada de puntos (multiplicador 1.5x)</strong> para canjes industriales</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5" style="background-color: rgba(217, 72, 20, 0.2);">
+<span class="material-symbols-outlined text-[18px] font-bold" style="color: #ff784b;">local_shipping</span>
+</div>
+<span class="font-body-md text-body-md text-on-primary"><strong>Atención prioritaria y despacho directo</strong> desde planta hasta tu obra o almacén</span>
+</li>
+</ul>
+</div>
+<!-- Bottom Banner & CTA Integrado -->
+<div class="pt-4 -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl flex flex-col sm:flex-row items-center justify-between gap-3 border-t" style="background-color: rgba(11, 37, 69, 0.95); border-color: rgba(217, 72, 20, 0.35);">
+<div class="flex items-center gap-2 self-start sm:self-auto">
+<span class="material-symbols-outlined text-[20px]" style="color: #ff784b;">headset_mic</span>
+<span class="font-spec-code text-spec-code text-on-primary">Atención prioritaria y despacho directo</span>
+</div>
+<a class="w-full sm:w-auto font-label-md text-label-md px-5 py-2.5 rounded-lg flex items-center justify-center gap-2 text-on-primary font-bold shadow-md hover:brightness-110 active:scale-95 transition-all" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20solicito%20acceder%20al%20Nivel%20Roraima%20para%20compras%20al%20mayor%20y%20constructoras" rel="noopener noreferrer" style="background-color: #d94814;" target="_blank">
+<span>Solicitar Alianza Mayorista</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div></div>
+<!-- Vínculo Industrial Metraje Box -->
+<div class="w-full bg-gradient-to-r from-primary-container via-navy-deep to-primary rounded-2xl p-space-xl text-center flex flex-col items-center relative overflow-hidden shadow-xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2 h-2 rounded-full bg-orange-vibrant"></span>
+<span class="font-spec-code text-spec-code text-gold-warm uppercase tracking-widest font-semibold">Vínculo Industrial &amp; Asesoría en Obra</span>
+</div>
+<h3 class="font-headline-xl text-headline-xl text-on-primary max-w-xl">
+          Únete al <span class="text-orange-vibrant font-bold">vínculo</span> industrial
+        </h3>
+<p class="font-body-md text-body-md text-on-primary-container max-w-2xl mt-3 mb-6">
+          Dinos los metros cuadrados, condiciones climáticas y el tipo de superficie (concreto, bloque o metal). Te calculamos la cantidad exacta de pintura requerida para minimizar desperdicios antes de emitir tu orden.
+        </p>
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<a class="bg-secondary hover:bg-orange-vibrant text-on-secondary font-label-md text-label-md px-6 py-3.5 rounded-lg flex items-center gap-2 transition-all shadow-lg hover:shadow-xl" href="https://wa.me/584242803167?text=Hola%20ConstruY%2C%20quiero%20cotizar%20mi%20proyecto%20industrial%20con%20c%C3%A1lculo%20de%20metraje" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">calculate</span>
+<span class="">Cotiza tu proyecto con ConstruY →</span>
+</a>
+<a class="bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-on-primary font-label-md text-label-md px-5 py-3.5 rounded-lg flex items-center gap-2 transition-colors" href="tel:+584242803167">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+<span class="">Llamar al taller: +58 424 280 3167</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== FLOATING WHATSAPP CTA ==================== -->
+<a aria-label="Escríbenos por WhatsApp" class="fixed bottom-6 right-6 z-40 bg-whatsapp-green text-on-primary w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all" href="https://wa.me/584242803167?text=Hola%20Materiales%20ConstruY%2C%20quisiera%20asesor%C3%ADa%20y%20precios" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[32px]">chat</span>
+</a>
+</div>
+<!-- Client-side Interactive Behavior: Slider & Product Filter -->
+<script>
+  (function() {
+    // 1. Hero Dynamic Slider Logic
+    const slides = document.querySelectorAll('.slider-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.getElementById('slider-prev');
+    const nextBtn = document.getElementById('slider-next');
+    let currentSlide = 0;
+    let slideInterval = null;
+
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((slide, i) => {
+        if (i === currentSlide) {
+          slide.classList.remove('opacity-0', 'z-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0', 'z-0');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentSlide) {
+          dot.classList.remove('w-2', 'bg-surface-container-lowest/50');
+          dot.classList.add('w-6', 'bg-gold-warm');
+        } else {
+          dot.classList.remove('w-6', 'bg-gold-warm');
+          dot.classList.add('w-2', 'bg-surface-container-lowest/50');
+        }
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay() {
+      if (slideInterval) clearInterval(slideInterval);
+    }
+
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay();
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+          const slideIndex = parseInt(dot.getAttribute('data-slide'), 10);
+          showSlide(slideIndex);
+          startAutoPlay();
+        });
+      });
+
+      const sliderContainer = document.getElementById('hero-slider');
+      if (sliderContainer) {
+        sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+        sliderContainer.addEventListener('mouseleave', startAutoPlay);
+      }
+
+      startAutoPlay();
+    }
+
+    // 2. Catalog Category Filtering Logic
+    const filterButtons = document.querySelectorAll('.catalog-filter-btn');
+    const productItems = document.querySelectorAll('.product-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+          b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.remove('text-on-surface-variant');
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+
+        const cat = btn.getAttribute('data-category');
+        productItems.forEach(item => {
+          if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // 3. Color Swatch Click Interaction (copies color code or launches consultation)
+    const swatches = document.querySelectorAll('.color-swatch-card');
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const titleEl = swatch.querySelector('.truncate');
+        const codeEl = swatch.querySelector('.font-spec-code.text-secondary');
+        const colorName = titleEl ? titleEl.textContent : 'este tono';
+        const hex = codeEl ? codeEl.textContent : '';
+        const whatsappMsg = `Hola ConstruY, me interesa consultar disponibilidad para el color ${colorName} (${hex})`;
+        window.open(`https://wa.me/584242803167?text=${encodeURIComponent(whatsappMsg)}`, '_blank');
+      });
+    });
+  })();
+</script></main><footer class="w-full bg-primary-container text-on-primary"><div class="max-w-[1280px] mx-auto px-gutter py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl"><div class="flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Logo ConstruY" class="w-auto object-contain bg-surface-container-lowest p-space-2xs rounded h-11" src="https://lh3.googleusercontent.com/aida/AEtjO1Un9_uEtCUOE0iez35ic10GKpVRXFrSI0Z-C0LTm1MFwThVQ4nRSGxr96NSaYpIHlIN1bZ3BFt0AqrwNfi2baJzWxCuSx9KrHtPMYPzNGP8G-azRnd40ooWsvLnLMBZ3NP8HancNKKYOSgkGp4jCLvF9mhy5TiHPs6R01ugPzIEb7wjme7053Iu4_XFK0SaR3uc66W4ynfYuoiBBBWykNd_F-gJtXw5TBVgw-MXHYq-muUCowlhoqjsDg"/></div><p class="font-body-sm text-body-sm text-on-primary-container">Pinturas arquitectónicas de alta durabilidad, esmaltes semi-industriales y revestimientos formulados para máxima resistencia.</p><div class="flex flex-col gap-space-2xs font-spec-code text-spec-code text-on-primary-container"><span class="font-label-caps text-label-caps text-gold-warm">RIF: J-504842850</span><span class="">Materiales ConstruY, C.A.</span><span class="">Macaracuay, Caracas, Venezuela</span></div></div><div class="flex flex-col gap-space-md"><span class="font-label-md text-label-md text-gold-warm uppercase tracking-wider">Catálogo &amp; Productos</span><ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-primary-container"><li class=""><a class="hover:text-on-primary transition-colors" data-path="carta-de-color" href="#">Carta de Color Oficial</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="esmalte-semi-industrial" href="#">Esmaltes Semi-Industriales</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="pinturas-de-caucho" href="#">Pinturas de Caucho</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="presentaciones" href="#">Presentaciones de Cuñete y Galón</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="fichas-tecnicas" href="#">Fichas Técnicas Descargables</a></li></ul></div><div class="flex flex-col gap-space-md"><span class="font-label-md text-label-md text-gold-warm uppercase tracking-wider">Alianzas &amp; Servicios</span><ul class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-primary-container"><li class=""><a class="hover:text-on-primary transition-colors" data-path="partner-construy" href="#">Programa Partner ConstruY</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="cotiza-tu-proyecto" href="#">Cotización para Empresas &amp; Obras</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="calculadora-rendimiento" href="#">Calculadora de Metraje</a></li><li class=""><a class="hover:text-on-primary transition-colors" data-path="nuestra-historia" href="#">Planta y Trayectoria</a></li></ul></div><div class="flex flex-col gap-space-md"><span class="font-label-md text-label-md text-gold-warm uppercase tracking-wider">Atención Directa</span><div class="flex flex-col gap-space-sm font-body-sm text-body-sm text-on-primary-container"><p class="">Asesoría técnica y cotizaciones inmediatas vía taller comercial:</p><a class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-whatsapp-green text-on-primary rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity" href="https://wa.me/584242803167" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">chat</span><span class="">WhatsApp: +58 424 280 3167</span></a><div class="flex items-center gap-space-xs mt-space-xs"><span class="material-symbols-outlined text-gold-warm text-[18px]">storefront</span><span class="">Despachos a nivel nacional</span></div></div></div></div><div class="mt-space-2xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-primary-container font-spec-code text-spec-code"><p class="">© 2025 Materiales ConstruY, C.A. Todos los derechos reservados.</p><p class="">Caracas - Miranda - Venezuela</p></div></div></footer>
+</body></html>

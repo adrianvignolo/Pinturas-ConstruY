@@ -1,0 +1,27 @@
+# Dependencias y entornos
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# Archivos de compilación
+dist/
+dist-ssr/
+*.local
+
+# Logs y caches
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+
+# Entornos y secretos
+.env
+.env.*.local
+.DS_Store
+Thumbs.db
+
+# Backups locales
+*-backup-*
+RESPALDOS/
