@@ -198,22 +198,15 @@ export default function Header({ onSearch, activePage, setActivePage }) {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setActivePage('home')}
-              className="flex items-center gap-3 text-left group"
+              className="flex items-center text-left group"
+              title="Ir al inicio"
             >
-              <div className="h-12 w-auto px-2 py-1 rounded-xl bg-white border border-surface-border flex items-center justify-center shadow-2xs group-hover:shadow-xs transition-shadow">
+              <div className="h-12 w-auto px-3 py-1.5 rounded-xl bg-white border border-surface-border flex items-center justify-center shadow-2xs group-hover:shadow-xs transition-shadow">
                 <img
-                  src="/brand/logo-construy.png"
-                  alt="Logo Pinturas ConstruY"
+                  src="./brand/logo-construy.png"
+                  alt="Materiales ConstruY"
                   className="h-9 w-auto object-contain"
                 />
-              </div>
-              <div>
-                <span className="block font-headline text-xl sm:text-2xl font-extrabold text-primary tracking-tight leading-none">
-                  Pinturas ConstruY
-                </span>
-                <span className="text-[11px] font-mono text-on-surface-variant font-medium block mt-0.5">
-                  Fabricantes de Pintura · Caracas
-                </span>
               </div>
             </button>
           </div>
@@ -419,7 +412,7 @@ export default function Header({ onSearch, activePage, setActivePage }) {
               <div className="flex items-center">
                 <div className="h-10 w-auto px-2.5 py-1 rounded-xl bg-white flex items-center justify-center shadow-xs">
                   <img
-                    src="/brand/logo-construy.png"
+                    src="./brand/logo-construy.png"
                     alt="Logo Pinturas ConstruY"
                     className="h-8 w-auto object-contain"
                   />
@@ -652,7 +645,7 @@ export default function Header({ onSearch, activePage, setActivePage }) {
                               {/* Imagen del producto compacta en tarjeta blanca para contraste */}
                               <div className="h-24 sm:h-28 w-full bg-white rounded-xl p-2 flex items-center justify-center overflow-hidden shadow-xs">
                                 <img
-                                  src={prod.local_image || prod.image_url || '/brand/logo-construy.png'}
+                                  src={prod.local_image || prod.image_url || './brand/logo-construy.png'}
                                   alt={prod.name}
                                   className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
                                 />

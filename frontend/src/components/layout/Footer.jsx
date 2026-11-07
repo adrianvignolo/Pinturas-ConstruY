@@ -15,7 +15,7 @@ export default function Footer({ company, setActivePage }) {
             <div className="flex items-center gap-3">
               <div className="h-11 w-auto px-2 py-1 rounded-xl bg-white flex items-center justify-center shadow-xs border border-white/20">
                 <img
-                  src="/brand/logo-construy.png"
+                  src="./brand/logo-construy.png"
                   alt="Pinturas ConstruY"
                   className="h-8 w-auto object-contain"
                 />
